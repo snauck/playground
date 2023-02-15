@@ -14,7 +14,7 @@ env:
 
 jobs:
   build-image:
-    runs-on: self-hosted-dev
+    # runs-on: self-hosted-dev
     permissions:
       contents: 'read'
       actions: 'write'
