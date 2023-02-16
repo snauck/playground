@@ -14,7 +14,7 @@ env:
 
 jobs:
   build-image:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     permissions:
       contents: 'read'
       actions: 'write'
@@ -23,6 +23,14 @@ jobs:
       run:
         working-directory: playground
     steps:
+      - name: Authentication
+        id: auth
+        uses: google-github-actions/auth@v1.0.0
+        with:
+          credentials_json: ${{ secrets.PROJECT_SA_KEY }}
+          export_environment_variables: true
+          retries: 5
+          backoff: tr
       - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@v1.1.0
 
