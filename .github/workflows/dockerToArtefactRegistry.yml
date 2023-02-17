@@ -36,10 +36,6 @@ jobs:
       - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@v1.1.0
 
-      - name: Configure docker-credentials-gcr
-        run:
-          gcloud components install docker-credential-gcr
-
       - name: Configure Docker
         run: |
           gcloud auth configure-docker --quiet \
