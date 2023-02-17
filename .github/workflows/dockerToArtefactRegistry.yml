@@ -14,7 +14,7 @@ env:
 
 jobs:
   build-image:
-    runs-on: ubuntu-22.04
+    runs-on: macOS-12
     environment: DEV
     permissions:
       contents: 'read'
@@ -35,6 +35,11 @@ jobs:
           backoff: tr
       - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@v1.1.0
+
+      - name: Configure Docker
+        run: |
+          gcloud auth configure-docker --quiet
+          gcloud auth configure-docker ${PROJECT_LOCATION}-docker.pkg.dev --quiet
 
       - name: Build Docker Images PLAYGROUND
         working-directory: playground
