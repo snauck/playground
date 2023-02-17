@@ -14,7 +14,7 @@ env:
 
 jobs:
   build-image:
-    runs-on: macOS-12
+    runs-on: playgroundRunner
     environment: DEV
     permissions:
       contents: 'read'
