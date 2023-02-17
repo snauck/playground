@@ -42,7 +42,7 @@ jobs:
           gcloud auth configure-docker ${PROJECT_LOCATION}-docker.pkg.dev --quiet
 
       - name: Build Docker Images PLAYGROUND
-        working-directory: playground
+        working-directory: .
         run: |
           docker build -t playground .
 
