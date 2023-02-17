@@ -42,8 +42,11 @@ jobs:
 
       - name: Configure Docker
         run: |
-          gcloud auth configure-docker --quiet
-          gcloud auth configure-docker ${PROJECT_LOCATION}-docker.pkg.dev --quiet
+          gcloud auth configure-docker --quiet \
+          gcloud auth configure-docker ${PROJECT_LOCATION}-docker.pkg.dev --quiet \
+
+      - name: Run the build process with Docker
+        uses: docker
 
       - name: Build Docker Images PLAYGROUND
         run: |
@@ -51,5 +54,5 @@ jobs:
 
       - name: Tag and Push Docker Images PLAYGROUND
         run: |
-          docker tag playground ${DOCKER_REPO}/playground:${GITHUB_SHA}
-          docker push ${DOCKER_REPO}/playground:${GITHUB_SHA}
+          docker tag playground ${DOCKER_REPO}/playground:${GITHUB_SHA} \
+          docker push ${DOCKER_REPO}/playground:${GITHUB_SHA} \
