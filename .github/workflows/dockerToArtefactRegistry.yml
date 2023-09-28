@@ -44,3 +44,4 @@ jobs:
         run: |
           docker tag playground ${DOCKER_REPO}/playground:${GITHUB_SHA} 
           docker push ${DOCKER_REPO}/playground:${GITHUB_SHA} 
+          
